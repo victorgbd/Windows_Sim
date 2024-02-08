@@ -38,6 +38,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministradorDeTareas));
             timerRecursos = new System.Windows.Forms.Timer(components);
             label2 = new Label();
             chartCPU = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -245,6 +246,7 @@
             Controls.Add(labelProcesos);
             Controls.Add(panelProcesos);
             Controls.Add(panelRecursos);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdministradorDeTareas";
             Text = "AdministradorDeTareas";
             Load += AdministradorDeTareas_Load;

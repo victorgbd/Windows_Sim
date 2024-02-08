@@ -101,11 +101,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(54, 73);
+            label2.Location = new Point(43, 73);
             label2.Name = "label2";
-            label2.Size = new Size(54, 17);
+            label2.Size = new Size(74, 17);
             label2.TabIndex = 1;
-            label2.Text = "Chrome";
+            label2.Text = "Navegador";
             label2.TextAlign = ContentAlignment.TopCenter;
             label2.DoubleClick += panelChrome_DoubleClick;
             // 

@@ -37,7 +37,9 @@ namespace Windows_Sim
 
         private void panelChrome_DoubleClick(object sender, EventArgs e)
         {
-            Process.Start("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+            //process.start("c:\\program files\\google\\chrome\\application\\chrome.exe");
+            Navegador navegador = new Navegador();
+            navegador.Show();
         }
     }
 }
