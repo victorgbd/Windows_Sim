@@ -55,6 +55,8 @@
             labelProcesos = new Label();
             labelRecursos = new Label();
             timerProcesos = new System.Windows.Forms.Timer(components);
+            NombreProceso = new DataGridViewTextBoxColumn();
+            PorcentajeCPU = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)chartCPU).BeginInit();
             panelRecursos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartDisk).BeginInit();
@@ -207,6 +209,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { NombreProceso, PorcentajeCPU });
             dataGridView1.Location = new Point(5, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -236,6 +239,22 @@
             // timerProcesos
             // 
             timerProcesos.Tick += timerProcesos_Tick;
+            // 
+            // NombreProceso
+            // 
+            NombreProceso.HeaderText = "Tarea";
+            NombreProceso.MinimumWidth = 6;
+            NombreProceso.Name = "NombreProceso";
+            NombreProceso.ReadOnly = true;
+            NombreProceso.Width = 125;
+            // 
+            // PorcentajeCPU
+            // 
+            PorcentajeCPU.HeaderText = "CPU%";
+            PorcentajeCPU.MinimumWidth = 6;
+            PorcentajeCPU.Name = "PorcentajeCPU";
+            PorcentajeCPU.ReadOnly = true;
+            PorcentajeCPU.Width = 125;
             // 
             // AdministradorDeTareas
             // 
@@ -279,5 +298,7 @@
         private Label labelRecursos;
         private DataGridView dataGridView1;
         private System.Windows.Forms.Timer timerProcesos;
+        private DataGridViewTextBoxColumn NombreProceso;
+        private DataGridViewTextBoxColumn PorcentajeCPU;
     }
 }

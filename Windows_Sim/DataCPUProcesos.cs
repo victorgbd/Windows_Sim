@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Windows_Sim
 {
-    internal class DataCPUProcesos
+    public class DataCPUProcesos
     {
         public string NombreProceso { get; set; }
         public string PorcentajeCPU { get; set; }

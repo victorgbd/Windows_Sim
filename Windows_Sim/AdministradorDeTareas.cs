@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
+/*todo lo que este comentado es para que funcione con los recursos del pc donde se ejecuta*/
+
+
 namespace Windows_Sim
 {
     public partial class AdministradorDeTareas : Form
@@ -24,9 +27,11 @@ namespace Windows_Sim
         Computer computerInfo;
         IHardwareInfo hardwareInfo;
         List<Panel> panels;
-        protected Process[] processCollection = Process.GetProcesses();
+        //protected Process[] processCollection = Process.GetProcesses();
+        List<DataCPUProcesos> listaProcesos = new List<DataCPUProcesos>();
+        int indexProceso = 0;
 
-        public AdministradorDeTareas()
+        public AdministradorDeTareas(List<DataCPUProcesos> listaProcesos)
         {
             InitializeComponent();
             hardwareInfo = new HardwareInfo();
@@ -45,23 +50,41 @@ namespace Windows_Sim
             cpuCounter.CounterName = "% Processor Time";
             cpuCounter.InstanceName = "_Total";
 
-            //ramCounter = new PerformanceCounter("Memory", "Available MBytes");
             diskCounter =
             new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
 
 
-            timerProcesos.Interval = 10000;
+            timerProcesos.Interval = 2000;
             timerRecursos.Interval = 1000; // 1000 milisegundos = 1 segundo
 
             // Inicia el Timer
             timerRecursos.Start();
             timerProcesos.Start();
+            this.listaProcesos = listaProcesos;
+            Disposed += MiFormulario_Disposed;
         }
+        public int indexProcess
+        {
+            get { return indexProceso; }
+            set { indexProceso = value; }
+        }
+        public List<DataCPUProcesos> listadProcesos
+        {
+            get { return listaProcesos; }
+            set { listaProcesos = value; }
+        }
+        private void MiFormulario_Disposed(object sender, EventArgs e)
+        {
+            Escritorio escritorio = Application.OpenForms["Escritorio"] as Escritorio;
 
+            if (escritorio != null)
+            {
+                escritorio.listadProcesos.RemoveAt(indexProceso);
+            }
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //double ram = ramCounter.NextValue();
             if (hardwareInfo.CpuList.Count > 0)
             {
                 cpuModelLb.Text = hardwareInfo.CpuList[0].Name;
@@ -105,7 +128,7 @@ namespace Windows_Sim
             chartDisk.ChartAreas[0].AxisX.Maximum = x;
             chartDisk.ChartAreas[0].AxisY.Maximum = 100.0;
             x += 1;
-            
+
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -116,54 +139,65 @@ namespace Windows_Sim
         private void labelProcesos_Click(object sender, EventArgs e)
         {
             panels[0].BringToFront();
+
         }
 
         private void AdministradorDeTareas_Load(object sender, EventArgs e)
         {
-            List<DataCPUProcesos> listaProcesos = new List<DataCPUProcesos>();
-            Task.Run(() => { hardwareInfo.RefreshCPUList(); });
-            Task.Run(() => {
-                
-                foreach (Process process in processCollection)
-                {
-                    using (PerformanceCounter processCpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName))
-                    {
-                        float processCpuUsage = processCpuCounter.NextValue();
-                        listaProcesos.Add(new DataCPUProcesos(process.ProcessName, processCpuUsage + "%"));
 
-                    }
-                }
-            });
-            dataGridView1.DataSource = listaProcesos;
+
+            //List<DataCPUProcesos> listaProcesos = new List<DataCPUProcesos>(); //codigo viejo
+            Task.Run(() => { hardwareInfo.RefreshCPUList(); });                  //codigo viejo
+            //Task.Run(() => {                                                   //codigo viejo
+
+            //    foreach (Process process in processCollection)
+            //    {
+            //        using (PerformanceCounter processCpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName))
+            //        {
+            //            float processCpuUsage = processCpuCounter.NextValue();
+            //            listaProcesos.Add(new DataCPUProcesos(process.ProcessName, processCpuUsage + "%"));
+
+            //        }
+            //    }
+            //});
+            //dataGridView1.DataSource = listaProcesos;
         }
 
         private void timerProcesos_Tick(object sender, EventArgs e)
         {
-                Task thread = new Task(procesosRun);
-                thread.Start();
-        }
-        private void updateData(List<DataCPUProcesos> dataCPU)
-        {
-            
-            dataGridView1.DataSource = dataCPU;
-            
-        }
-        private void procesosRun()
-        {
-            List<DataCPUProcesos> listaProcesos = new List<DataCPUProcesos>();
-            foreach (Process process in processCollection)
-            {
-                using (PerformanceCounter processCpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName))
-                {
-                    float processCpuUsage = processCpuCounter.NextValue();
+            //Task thread = new Task(procesosRun);
+            //thread.Start();
+            dataGridView1.Rows.Clear();
 
-                    listaProcesos.Add(new DataCPUProcesos(process.ProcessName, processCpuUsage + "%"));
-                }
-            }
-            dataGridView1.Invoke((MethodInvoker)delegate
+            for (int i = 0; i < listaProcesos.Count; i++)
             {
-                updateData(listaProcesos);
-            });
+                dataGridView1.Rows.Add(listaProcesos[i].NombreProceso, listaProcesos[i].PorcentajeCPU);
+            }
+            
         }
+        //private void updateData(List<DataCPUProcesos> dataUsage) // codigo viejo
+        //{
+
+        //    dataGridView1.DataSource = dataUsage;
+
+
+        //}
+        //private void procesosRun()
+        //{
+        //    List<DataCPUProcesos> listaProcesos = new List<DataCPUProcesos>(); //codigo viejo
+        //    foreach (Process process in processCollection)
+        //    {
+        //        using (PerformanceCounter processCpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName))
+        //        {
+        //            float processCpuUsage = processCpuCounter.NextValue();
+
+        //            listaProcesos.Add(new DataCPUProcesos(process.ProcessName, processCpuUsage + "%"));
+        //        }
+        //    }
+        //    dataGridView1.Invoke((MethodInvoker)delegate
+        //    {
+        //        updateData(listaProcesos);
+        //    });
+        //}
     }
 }
