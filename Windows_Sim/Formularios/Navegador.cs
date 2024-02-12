@@ -17,26 +17,9 @@ namespace Windows_Sim
 {
     public partial class Navegador : Form
     {
-        int indexProceso = 0;
         public Navegador()
         {
             InitializeComponent();
-            Disposed += MiFormulario_Disposed;
-
-        }
-        public int indexProcess
-        {
-            get { return indexProceso; }
-            set { indexProceso = value; }
-        }
-        private void MiFormulario_Disposed(object sender, EventArgs e)
-        {
-            Escritorio escritorio = Application.OpenForms["Escritorio"] as Escritorio;
-
-            if (escritorio != null)
-            {
-                escritorio.listadProcesos.RemoveAt(indexProceso);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)

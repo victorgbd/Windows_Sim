@@ -1,45 +1,33 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Windows_Sim.Formularios;
 
 namespace Windows_Sim
 {
     public partial class Escritorio : Form
     {
         private Point panelMouseDownLocation;
-        List<DataCPUProcesos> listaProcesos = new List<DataCPUProcesos>();
         AdministradorDeTareas administrador;
         bool menuClicked = false;
 
         public Escritorio()
         {
             InitializeComponent();
-            listaProcesos.Add(new DataCPUProcesos("Admin Tareas", "0.1%"));
-            administrador = new AdministradorDeTareas(listaProcesos);
+            administrador = new AdministradorDeTareas();
+
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.WindowState = FormWindowState.Maximized;
 
 
         }
-        public List<DataCPUProcesos> listadProcesos
-        {
-            get { return listaProcesos; }
-            set { listaProcesos = value; }
-        }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
-            if (!administrador.IsDisposed)
-            {
-                administrador.Show();
-            }
-            else
-            {
-                listaProcesos.Add(new DataCPUProcesos("Admin Tareas", "0.1%"));
-                administrador = new AdministradorDeTareas(listaProcesos);
 
-                administrador.indexProcess = listadProcesos.Count - 1;
-                administrador.Show();
-            }
+            administrador.Show();
+
+
 
         }
 
@@ -62,13 +50,10 @@ namespace Windows_Sim
 
         private void panelChrome_DoubleClick(object sender, EventArgs e)
         {
-            //process.start("c:\\program files\\google\\chrome\\application\\chrome.exe");
-            listaProcesos.Add(new DataCPUProcesos("Navegador", "0.1%"));
 
-            administrador.listadProcesos = listaProcesos;
+
 
             Navegador navegador = new Navegador();
-            navegador.indexProcess = listadProcesos.Count - 1;
             navegador.Show();
         }
 
@@ -78,15 +63,40 @@ namespace Windows_Sim
             {
                 menuClicked = !menuClicked;
                 panel2.Visible = menuClicked;
-                
+
             }
             else
             {
                 menuClicked = !menuClicked;
                 panel2.Visible = menuClicked;
             }
-            
+
         }
 
+        private void Explorer_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Explorer explorer = new Explorer();
+            explorer.Show();
+        }
+
+
+
+        private void papelera_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Papelera papelera = new Papelera();
+            papelera.Show();
+        }
+
+        private void pictureBox8_DoubleClick(object sender, EventArgs e)
+        {
+            EditorTexto editorTexto = new EditorTexto();
+            editorTexto.Show();
+        }
+
+        private void pictureBox9_DoubleClick(object sender, EventArgs e)
+        {
+            Reproductor reproductor = new Reproductor();
+            reproductor.Show();
+        }
     }
 }

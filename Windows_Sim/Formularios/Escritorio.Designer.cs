@@ -44,6 +44,18 @@
             panel4 = new Panel();
             label4 = new Label();
             pictureBox5 = new PictureBox();
+            panel5 = new Panel();
+            label5 = new Label();
+            pictureBox6 = new PictureBox();
+            panel6 = new Panel();
+            label6 = new Label();
+            pictureBox7 = new PictureBox();
+            panel7 = new Panel();
+            label7 = new Label();
+            pictureBox8 = new PictureBox();
+            panel8 = new Panel();
+            label8 = new Label();
+            pictureBox9 = new PictureBox();
             panelAdmiTar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelChrome.SuspendLayout();
@@ -55,6 +67,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // panelAdmiTar
@@ -230,12 +250,168 @@
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
             // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Transparent;
+            panel5.Controls.Add(label5);
+            panel5.Controls.Add(pictureBox6);
+            panel5.Location = new Point(263, 39);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(156, 98);
+            panel5.TabIndex = 4;
+            panel5.MouseDoubleClick += Explorer_MouseDoubleClick;
+            panel5.MouseDown += panelAdmiTar_MouseDown;
+            panel5.MouseMove += panelAdmiTar_MouseMove;
+            // 
+            // label5
+            // 
+            label5.AutoEllipsis = true;
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(50, 73);
+            label5.Name = "label5";
+            label5.Size = new Size(60, 17);
+            label5.TabIndex = 1;
+            label5.Text = "Carpetas";
+            label5.TextAlign = ContentAlignment.TopCenter;
+            label5.MouseDoubleClick += Explorer_MouseDoubleClick;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(51, 5);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(57, 65);
+            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox6.TabIndex = 0;
+            pictureBox6.TabStop = false;
+            pictureBox6.MouseDoubleClick += Explorer_MouseDoubleClick;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Transparent;
+            panel6.Controls.Add(label6);
+            panel6.Controls.Add(pictureBox7);
+            panel6.Location = new Point(10, 273);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(156, 98);
+            panel6.TabIndex = 5;
+            panel6.MouseDoubleClick += papelera_MouseDoubleClick;
+            panel6.MouseDown += panelAdmiTar_MouseDown;
+            panel6.MouseMove += panelAdmiTar_MouseMove;
+            // 
+            // label6
+            // 
+            label6.AutoEllipsis = true;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(51, 73);
+            label6.Name = "label6";
+            label6.Size = new Size(59, 17);
+            label6.TabIndex = 1;
+            label6.Text = "Papelera";
+            label6.TextAlign = ContentAlignment.TopCenter;
+            label6.MouseDoubleClick += papelera_MouseDoubleClick;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(51, 5);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(57, 65);
+            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox7.TabIndex = 0;
+            pictureBox7.TabStop = false;
+            pictureBox7.MouseDoubleClick += papelera_MouseDoubleClick;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.Transparent;
+            panel7.Controls.Add(label7);
+            panel7.Controls.Add(pictureBox8);
+            panel7.Location = new Point(263, 154);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(156, 98);
+            panel7.TabIndex = 6;
+            panel7.DoubleClick += pictureBox8_DoubleClick;
+            panel7.MouseDown += panelAdmiTar_MouseDown;
+            panel7.MouseMove += panelAdmiTar_MouseMove;
+            // 
+            // label7
+            // 
+            label7.AutoEllipsis = true;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(59, 73);
+            label7.Name = "label7";
+            label7.Size = new Size(43, 17);
+            label7.TabIndex = 1;
+            label7.Text = "Editor";
+            label7.TextAlign = ContentAlignment.TopCenter;
+            label7.DoubleClick += pictureBox8_DoubleClick;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
+            pictureBox8.Location = new Point(51, 5);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(57, 65);
+            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox8.TabIndex = 0;
+            pictureBox8.TabStop = false;
+            pictureBox8.DoubleClick += pictureBox8_DoubleClick;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.Transparent;
+            panel8.Controls.Add(label8);
+            panel8.Controls.Add(pictureBox9);
+            panel8.Location = new Point(263, 273);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(156, 98);
+            panel8.TabIndex = 7;
+            panel8.DoubleClick += pictureBox9_DoubleClick;
+            panel8.MouseDown += panelAdmiTar_MouseDown;
+            panel8.MouseMove += panelAdmiTar_MouseMove;
+            // 
+            // label8
+            // 
+            label8.AutoEllipsis = true;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(25, 73);
+            label8.Name = "label8";
+            label8.Size = new Size(109, 17);
+            label8.TabIndex = 1;
+            label8.Text = "MusiVideo Player";
+            label8.TextAlign = ContentAlignment.TopCenter;
+            label8.DoubleClick += pictureBox9_DoubleClick;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(51, 5);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(57, 65);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 0;
+            pictureBox9.TabStop = false;
+            pictureBox9.DoubleClick += pictureBox9_DoubleClick;
+            // 
             // Escritorio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1472, 970);
+            Controls.Add(panel8);
+            Controls.Add(panel7);
+            Controls.Add(panel6);
+            Controls.Add(panel5);
             Controls.Add(panel1);
             Controls.Add(panelChrome);
             Controls.Add(panelAdmiTar);
@@ -257,6 +433,18 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
         }
 
@@ -277,5 +465,17 @@
         private Panel panel4;
         private Label label4;
         private PictureBox pictureBox5;
+        private Panel panel5;
+        private Label label5;
+        private PictureBox pictureBox6;
+        private Panel panel6;
+        private Label label6;
+        private PictureBox pictureBox7;
+        private Panel panel7;
+        private Label label7;
+        private PictureBox pictureBox8;
+        private Panel panel8;
+        private Label label8;
+        private PictureBox pictureBox9;
     }
 }
